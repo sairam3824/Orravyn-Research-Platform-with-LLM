@@ -598,9 +598,11 @@
     <div id="beta-notice" style="display: none;">
         <div class="badge">
             <span class="label">BETA</span>
-            This is a beta version of the Research Platform. We are actively testing features and improving performance. Some features are currently disabled in this version.
+            This is a beta version of the Research Platform. We are actively testing features and improving performance.
+            Some features are currently disabled in this version.
             <br>
-            This is a test environment. If your content is plagiarised or misused, please report the issue immediately at
+            This is a test environment. If your content is plagiarised or misused, please report the issue immediately
+            at
             <a href="mailto:seraphyl@orravyn.cloud">support@orravyn.cloud</a> so that we can take appropriate action.
         </div>
     </div>
@@ -676,7 +678,8 @@
                                 <li><a class="dropdown-item" href="{% url 'groups:my_groups' %}">
                                         <i class="fas fa-user-friends"></i>My Groups
                                     </a></li>
-                                {% if user.user_type == 'publisher' or user.user_type == 'moderator' or user.user_type == 'admin' %}
+                                {% if user.user_type == 'publisher' or user.user_type == 'moderator' or user.user_type
+                                == 'admin' %}
                                 <li>
 
                                     <hr class="dropdown-divider">
@@ -879,13 +882,22 @@
         document.addEventListener("DOMContentLoaded", function () {
             const betaNotice = document.getElementById("beta-notice");
 
-            if (betaNotice) {
+            if (!sessionStorage.getItem("betaNoticeShown") && betaNotice) {
+                // Show the notice
                 betaNotice.style.display = "block";
 
+                // After 2.5 seconds, fade it out smoothly
                 setTimeout(() => {
-                    betaNotice.style.opacity = "0";
-                    setTimeout(() => betaNotice.remove(), 1000);
+                    betaNotice.style.opacity = "0"; // start fade
+                    // After transition, remove from DOM
+                    setTimeout(() => betaNotice.remove(), 1000); // 1s matches CSS transition
                 }, 4000);
+
+                // Mark as shown for this session
+                sessionStorage.setItem("betaNoticeShown", "true");
+            } else if (betaNotice) {
+                // Remove it immediately if already shown
+                betaNotice.remove();
             }
         });
     </script>
