@@ -1,5 +1,7 @@
 ## Research Platform — Detailed Architecture and Flows
 
+View at [orravyn.cloud](https://orravyn.cloud) or at [orravyn.saiii.in](https://orravyn.saiii.in)
+
 A Django-based research collaboration platform: accounts, papers, groups, search, real‑time chat, REST APIs with JWT, background processing, and a simple ML layer for recommendations and summaries.
 
 ### High-level Architecture
