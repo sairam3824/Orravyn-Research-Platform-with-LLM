@@ -3,4 +3,4 @@ conda activate research_platform
 cd research_platform
 python manage.py runserver
 
-python manage.py runserver
+python manage.py migrate
